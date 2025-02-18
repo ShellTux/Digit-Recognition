@@ -60,3 +60,5 @@ octave-workspace
 .direnv
 
 *.pdf
+
+/data
