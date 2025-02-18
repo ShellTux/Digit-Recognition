@@ -23,6 +23,9 @@
       packages = [
         octave
         pkgs.entr
+        pkgs.texliveFull
+        pkgs.gnumake
+        pkgs.pandoc
       ];
 
       INFOPATH = "${octave}/share/info";
