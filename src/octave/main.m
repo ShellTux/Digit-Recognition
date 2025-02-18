@@ -29,7 +29,6 @@ if recompute
          for sample = samples
             fprintf('Computing Audio Features for Participant %02d, digit %02d, sample %02d', participant, digit, sample);
             audio_file = sprintf("./AudioMNIST/data/%02d/%d_%02d_%d.wav", participant, digit, participant, sample);
-            [audio, Fs] = audioread(audio_file);
             if !exist(audio_file, 'file')
                fprintf(stderr, 'File not found: %s\n', audio_file);
                % Handle the case where the file doesn't exist (e.g., skip it,
@@ -60,12 +59,6 @@ if recompute
             duration = length(audio) / Fs;
             audio_features(participant, digit + 1, sample + 1, Features.Duration) = duration;
 
-            % Store the features.  Average over samples.
-            # audio_features(participant, digit + 1, 1) = (audio_features(participant, digit+1, 1)*(sample) + total_energy) / (sample + 1);
-            # audio_features(participant, digit + 1, 2) = (audio_features(participant, digit+1, 2)*(sample) + standard_deviation) / (sample + 1);
-            # audio_features(participant, digit + 1, 3) = (audio_features(participant, digit+1, 3)*(sample) + max_amplitude) / (sample + 1);
-            # audio_features(participant, digit + 1, 4) = (audio_features(participant, digit+1, 4)*(sample) + zero_crossing_rate) / (sample + 1);
-            # audio_features(participant, digit + 1, 5) = (audio_features(participant, digit+1, 5)*(sample) + duration) / (sample + 1);
             fprintf('\r');
          end
       end
